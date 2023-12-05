@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Banco {
     String nome;
@@ -30,6 +29,11 @@ public class Banco {
         System.out.println("Lista de Agências");
         System.out.println("=============\n");
 
+        if (listaAgencia.isEmpty()){
+            System.out.println("Nenhuma agência encontrada...");
+            return;
+        }
+
         for (int i = 0; i < 10; i++) {
             System.out.println(i + 1 + ". Nome: " + listaAgencia.get(i).obterNome() + " - Número: " + listaAgencia.get(i).obterNumero());
         }
@@ -42,5 +46,9 @@ public class Banco {
             }
         }
         return null;
+    }
+
+    public void removerAgencia(Agencia agenciaSelecionada) {
+        listaAgencia.remove(agenciaSelecionada);
     }
 }

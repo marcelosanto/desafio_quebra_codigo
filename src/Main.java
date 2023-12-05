@@ -37,7 +37,7 @@ public class Main {
                     selecionarAgencia(banco, sc);
                     break;
                 case 4:
-                   // removerAgencia();
+                    removerAgencia(banco, sc);
                     break;
                 case 5:
                     System.out.println("\n> Saindo do programa. Obrigado!");
@@ -86,17 +86,37 @@ public class Main {
 
     static void selecionarAgencia(Banco banco, Scanner sc) {
         System.out.println("\n==============");
-        System.out.println("  Seleção de Agência");
+        System.out.println("Seleção de Agência");
         System.out.println("==============");
 
         System.out.print("\nDigite o número da agência: ");
         int indice = sc.nextInt();
         sc.nextLine();
+
         Agencia agenciaSelecionada = banco.selecionarAgencia(indice);
         if (agenciaSelecionada != null) {
             System.out.println("Agência selecionada: " + agenciaSelecionada.obterNome());
         } else {
             System.out.println("Agência com o número " + indice + " não encontrada.");
+        }
+    }
+
+    private static void removerAgencia(Banco banco, Scanner sc) {
+        System.out.println("\n==============");
+        System.out.println("Remoção da Agência");
+        System.out.println("==============");
+
+        System.out.print("\ninforme o número da agência a ser removida: ");
+        int agNumero = sc.nextInt();
+        sc.nextLine();
+
+        Agencia agenciaSelecionada = banco.selecionarAgencia(agNumero);
+
+        if (agenciaSelecionada != null) {
+            banco.removerAgencia(agenciaSelecionada);
+            System.out.println("Agência " +agNumero+ " removida com sucesso.");
+        } else {
+            System.out.println("Agência com o número " + agNumero + " não encontrada.");
         }
     }
 }
